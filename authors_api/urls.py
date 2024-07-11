@@ -12,8 +12,8 @@ schema_view = get_schema_view(
     openapi.Info(
         title="Authors API",
         default_version="v1",
-        description="API endpoints for the Authors API course",
-        contact=openapi.Contact(email="api.imperfect@gmail.com"),
+        description="API endpoints for the Authors-Paradise",
+        contact=openapi.Contact(email="towhidulhq@gmail.com"),
         license=openapi.License(name="MIT License"),
     ),
     public=True,
