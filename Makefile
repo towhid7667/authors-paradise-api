@@ -53,3 +53,10 @@ test-report:
 
 test-report-html:
 	docker compose -f local.yml run --rm api pytest -p no:warnings --cov=. --cov-report html
+
+deploy-status:
+	docker compose -f local.yml run --rm api python manage.py check --deploy
+
+
+#secret_key_generate
+#python -c "import secrets; print(secrets.token_urlsafe(50))"

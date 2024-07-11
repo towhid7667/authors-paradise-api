@@ -8,7 +8,7 @@ from rest_framework.parsers import MultiPartParser
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 
-from authors_api.settings.local import DEFAULT_FROM_EMAIL
+from authors_api.settings.production import DEFAULT_FROM_EMAIL
 
 from .exceptions import CantFollowYourSelf
 from .models import Profile

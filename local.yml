@@ -118,4 +118,3 @@ volumes:
   local_postgres_data: {}
   local_postgres_data_backups: {}
   flower_data: {}
-
