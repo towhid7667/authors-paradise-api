@@ -8,8 +8,8 @@ __pycache__/
 .coverage*
 .DS_Store
 staticfiles
-.envs/*
-!.envs/.local/
+#.envs/*
+#!.envs/.local/
 
 # C extensions
 *.so
