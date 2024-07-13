@@ -11,12 +11,11 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["ec2-52-65-200-31.ap-s
 
 ADMIN_URL = env("DJANGO_ADMIN_URL")
 
-DATABASES = {"default" : env.db("DATABASE_URL")}
+DATABASES = {"default": env.db("DATABASE_URL")}
 
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED__PROTO", "https")
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")  # Fixed typo here
 
 SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
-
 
 SESSION_COOKIE_SECURE = True
 
@@ -28,16 +27,15 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool("DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS
 
 SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True)
 
-STATICFILES_STORAGE = "whitenoise.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"  # Updated storage class
 
-DEFAULT_FROM_EMAIL = env("DJANGO_DEFAULT_FROM_EMAIL", default="Authors Paradise Support <towhidulhq@gmail.com>",)
+DEFAULT_FROM_EMAIL = env("DJANGO_DEFAULT_FROM_EMAIL", default="Authors Paradise Support <towhidulhq@gmail.com>")
 
 SITE_NAME = "Authors Paradise"
 
 SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
 
 EMAIL_SUBJECT_PREFIX = env("DJANGO_EMAIL_SUBJECT_PREFIX", default="[Authors Paradise]")
-
 
 EMAIL_BACKEND = "djcelery_email.backends.CeleryEmailBackend"
 EMAIL_HOST = "smtp.mailgun.org"
@@ -48,15 +46,18 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DOMAIN = env("DOMAIN")
 
-
+# Logging configuration
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "filters" : {"require_debug_false" : {"()" : "django.utils.log.RequireDebugFalse"}},
+    "filters": {
+        "require_debug_false": {
+            "()": "django.utils.log.RequireDebugFalse"
+        }
+    },
     "formatters": {
         "verbose": {
-            "format": "%(levelname)s %(asctime)s %(module)s"
-            "%(process)d %(thread)d %(message)s"
+            "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s"
         }
     },
     "handlers": {
@@ -68,20 +69,20 @@ LOGGING = {
         "console": {
             "level": "DEBUG",
             "class": "logging.StreamHandler",
-            "formatter": "verbose",
+            "formatter": "verbose"
         }
     },
-    "root": {"level": "INFO", "handlers": ["console"]},
     "loggers": {
         "django.request": {
-            "handlers":["mail_admins"],
+            "handlers": ["mail_admins"],
             "level": "ERROR",
-            "propagate": True,
+            "propagate": True
         },
-        "django.security.DisallowedHost":{
+        "django.security.DisallowedHost": {
             "handlers": ["console", "mail_admins"],
             "level": "ERROR",
-            "propagate": True,
+            "propagate": True
         }
     }
 }
+
