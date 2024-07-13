@@ -2,4 +2,5 @@
 
 gunicorn
 psycopg2-binary==2.9.9
-whitenoise
+whitenoise==6.4.0
+
