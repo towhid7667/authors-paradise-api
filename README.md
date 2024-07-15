@@ -29,7 +29,7 @@ Authors' Paradise is a full-fledged blog platform inspired by Medium,   offering
 
 - **Clone the repository:** 
  
-  git clone https://github.com/towhid7667/authors-paradise-api/tree/main  
+  git clone https://github.com/towhid7667/authors-paradise-api.git  
   cd authors-paradise   
 
 - **Start the Docker containers:**  
